@@ -16,3 +16,25 @@ $(".time-block").each(function () {
     }
 });
 
+function timeIndicator() {    
+    time = moment().hours();
+
+    $(".time-block").each(function () {
+        var currentTime = parseInt($(this).attr("id"));
+
+        if (currentTime > time) {
+            $(this).removeClass(["past", "present"]);
+            $(this).addClass("future");
+        }
+        else if (currentTime === time) {
+            $(this).removeClass(["past", "future"]);
+            $(this).addClass("present");
+        }
+        else {
+            $(this).removeClass(["present", "future"]);
+            $(this).addClass("past");
+        }
+    });
+}
+
+timeIndicator();

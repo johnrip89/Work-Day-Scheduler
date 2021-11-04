@@ -1,13 +1,15 @@
+// Displays the current date
 $(currentDay).text(moment().format("[Today is] dddd, MMMM Do YYYY"));
 
-$(".saveBtn").on("click", function () {
-    console.log($(this))
+// Saves an event to the local storage
+$(".saveBtn").on("click", function () {    
     var text = $(this).siblings(".description").val();
     var time= $(this).parent().attr("id");
     
     localStorage.setItem(time, text)
 });
 
+// Displays saved events from local storage
 $(".time-block").each(function () {
     var savedData = $(this).attr("id");
     var showData = localStorage.getItem(savedData);
@@ -16,6 +18,7 @@ $(".time-block").each(function () {
     }
 });
 
+// Indicates if a time-block is past, present or future
 function timeIndicator() {    
     time = moment().hours();
 

@@ -8,3 +8,11 @@ $(".saveBtn").on("click", function () {
     localStorage.setItem(time, text)
 });
 
+$(".time-block").each(function () {
+    var savedData = $(this).attr("id");
+    var showData = localStorage.getItem(savedData);
+    if (showData !== null) {
+        $(this).children(".description").val(showData);
+    }
+});
+
